@@ -1,6 +1,8 @@
 ## Tenzies
 
-Tenzies is a web app based on the dice game Tenzi where you have dice and roll them until you get all the dice to the same number
+Tenzies is a fun web game based on the dice game Tenzi
+
+Roll a set of 10 dice until they all have the same number
 
 This project was created with React, JavaScript and CSS3
 
