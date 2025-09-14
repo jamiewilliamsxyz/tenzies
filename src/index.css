@@ -1,6 +1,6 @@
 :root {
   --primary: #57a8ff;
-  --success: #5dff8d;
+  --success: #39ff85;
   --background: #eeeeee;
   --text: #242424;
 }
@@ -40,6 +40,10 @@ main {
   border: none;
   background-color: white;
   font-size: 1.75rem;
+}
+
+.die-held {
+  background-color: var(--success);
 }
 
 .button {
