@@ -66,8 +66,7 @@ p {
 
 .button {
   margin-top: 12px;
-  height: 45px;
-  width: 100px;
+  padding: 12px 20px;
   border: none;
   background-color: var(--primary);
   color: white;
