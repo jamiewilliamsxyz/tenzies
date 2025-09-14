@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { nanoid } from "nanoid";
 import { useWindowSize } from "react-use";
 import Confetti from "react-confetti";
-import { nanoid } from "nanoid";
 import { Die } from "./components/Die";
 import { Button } from "./components/Button";
 
@@ -39,10 +39,8 @@ export const App = () => {
   };
 
   const [dice, setDice] = useState(() => generateAllNewDice());
-
   const { width, height } = useWindowSize();
-
-  let gameWon =
+  const gameWon =
     dice.every((die) => die.isHeld) &&
     dice.every((die) => die.value === dice[0].value);
 
