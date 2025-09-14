@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Die } from "./components/Die";
+import { Button } from "./components/Button";
 
 export const App = () => {
   const generateAllNewDice = () => {
@@ -15,6 +16,7 @@ export const App = () => {
           <Die value={num} />
         ))}
       </div>
+      <Button onClick={() => setNewDice(generateAllNewDice)}>Roll</Button>
     </main>
   );
 };
