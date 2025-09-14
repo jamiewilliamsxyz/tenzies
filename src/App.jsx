@@ -4,15 +4,25 @@ import { Die } from "./components/Die";
 import { Button } from "./components/Button";
 
 export const App = () => {
+  const generateDieValue = () => {
+    return Math.ceil(Math.random() * 6);
+  };
+
   const generateAllNewDice = () => {
     return new Array(10).fill(0).map(() => ({
-      value: Math.ceil(Math.random() * 6),
+      value: generateDieValue(),
       isHeld: false,
       id: nanoid(),
     }));
   };
 
-  const [dice, setDice] = useState(generateAllNewDice());
+  const rollDice = () => {
+    setDice((prevDice) =>
+      prevDice.map((die) =>
+        die.isHeld ? die : { ...die, value: generateDieValue() }
+      )
+    );
+  };
 
   const hold = (id) => {
     setDice((prevDice) =>
@@ -21,6 +31,8 @@ export const App = () => {
       )
     );
   };
+
+  const [dice, setDice] = useState(generateAllNewDice());
 
   return (
     <main>
@@ -34,7 +46,7 @@ export const App = () => {
           />
         ))}
       </div>
-      <Button onClick={() => setDice(generateAllNewDice)}>Roll</Button>
+      <Button onClick={rollDice}>Roll</Button>
     </main>
   );
 };
