@@ -12,16 +12,29 @@ export const App = () => {
     }));
   };
 
-  const [newDice, setNewDice] = useState(generateAllNewDice());
+  const [dice, setDice] = useState(generateAllNewDice());
+
+  const hold = (id) => {
+    setDice((prevDice) =>
+      prevDice.map((die) =>
+        die.id === id ? { ...die, isHeld: !die.isHeld } : die
+      )
+    );
+  };
 
   return (
     <main>
       <div className="dice-container">
-        {newDice.map((dieObj) => (
-          <Die key={dieObj.id} value={dieObj.value} isHeld={dieObj.isHeld} />
+        {dice.map((dieObj) => (
+          <Die
+            key={dieObj.id}
+            value={dieObj.value}
+            isHeld={dieObj.isHeld}
+            hold={() => hold(dieObj.id)}
+          />
         ))}
       </div>
-      <Button onClick={() => setNewDice(generateAllNewDice)}>Roll</Button>
+      <Button onClick={() => setDice(generateAllNewDice)}>Roll</Button>
     </main>
   );
 };

@@ -1,6 +1,9 @@
 export const Die = (props) => {
   return (
-    <button className={`die ${props.isHeld && "die-held"}`}>
+    <button
+      onClick={props.hold}
+      className={`die ${props.isHeld && "die-held"}`}
+    >
       {props.value}
     </button>
   );
