@@ -34,7 +34,7 @@ export const App = () => {
     );
   };
 
-  const [dice, setDice] = useState(generateAllNewDice());
+  const [dice, setDice] = useState(() => generateAllNewDice());
 
   let gameWon =
     dice.every((die) => die.isHeld) &&
