@@ -6,7 +6,7 @@ This project was created with React, JavaScript and CSS3
 
 ### Image
 
-![Tenzies Web App Screenshot](./images/readme-img.png)
+![Tenzies Web App Screenshot](./src/images/readme-img.png)
 
 ### Note
 
