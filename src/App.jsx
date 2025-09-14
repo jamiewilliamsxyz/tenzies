@@ -19,11 +19,15 @@ export const App = () => {
   };
 
   const rollDice = () => {
-    setDice((prevDice) =>
-      prevDice.map((die) =>
-        die.isHeld ? die : { ...die, value: generateDieValue() }
-      )
-    );
+    if (!gameWon) {
+      setDice((prevDice) =>
+        prevDice.map((die) =>
+          die.isHeld ? die : { ...die, value: generateDieValue() }
+        )
+      );
+    } else {
+      setDice(generateAllNewDice);
+    }
   };
 
   const hold = (id) => {
@@ -36,11 +40,11 @@ export const App = () => {
 
   const [dice, setDice] = useState(() => generateAllNewDice());
 
+  const { width, height } = useWindowSize();
+
   let gameWon =
     dice.every((die) => die.isHeld) &&
     dice.every((die) => die.value === dice[0].value);
-
-  const { width, height } = useWindowSize();
 
   return (
     <main>
