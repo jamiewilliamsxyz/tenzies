@@ -49,6 +49,12 @@ export const App = () => {
   return (
     <main>
       {gameWon && <Confetti width={width} height={height} />}
+      <div aria-live="polite" className="sr-only">
+        {gameWon && (
+          <p>Congratulations! You won! Press "New Game" to start again.</p>
+        )}
+      </div>
+
       <header>
         <h1>Tenzies</h1>
         <p>
