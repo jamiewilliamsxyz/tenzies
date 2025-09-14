@@ -1,7 +1,20 @@
+import { Die } from "./components/Die";
+
 export const App = () => {
   return (
     <main>
-      <div></div>
+      <div className="dice-container">
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+      </div>
     </main>
   );
 };
