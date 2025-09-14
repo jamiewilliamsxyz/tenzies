@@ -36,6 +36,14 @@ export const App = () => {
 
   return (
     <main>
+      <header>
+        <h1>Tenzies</h1>
+        <p>
+          Roll until all dice are the same. Click each die to freeze it at its
+          current value between rolls.
+        </p>
+      </header>
+
       <div className="dice-container">
         {dice.map((dieObj) => (
           <Die
@@ -46,6 +54,7 @@ export const App = () => {
           />
         ))}
       </div>
+
       <Button onClick={rollDice}>Roll</Button>
     </main>
   );
