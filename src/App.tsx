@@ -1,24 +1,14 @@
 import { useState } from "react";
-import { nanoid } from "nanoid";
+import { JSX } from "react";
 import { useWindowSize } from "react-use";
 import Confetti from "react-confetti";
 import { Die } from "./components/Die";
 import { Button } from "./components/Button";
+import type { DieType } from "./types";
+import { generateAllNewDice, generateDieValue } from "./utils";
 
-export const App = () => {
-  const generateDieValue = () => {
-    return Math.ceil(Math.random() * 6);
-  };
-
-  const generateAllNewDice = () => {
-    return new Array(10).fill(0).map(() => ({
-      value: generateDieValue(),
-      isHeld: false,
-      id: nanoid(),
-    }));
-  };
-
-  const rollDice = () => {
+export const App = (): JSX.Element => {
+  const rollDice = (): void => {
     if (!gameWon) {
       setDice((prevDice) =>
         prevDice.map((die) =>
@@ -30,7 +20,7 @@ export const App = () => {
     }
   };
 
-  const hold = (id) => {
+  const hold = (id: string): void => {
     setDice((prevDice) =>
       prevDice.map((die) =>
         die.id === id ? { ...die, isHeld: !die.isHeld } : die
@@ -38,11 +28,13 @@ export const App = () => {
     );
   };
 
-  const [dice, setDice] = useState(() => generateAllNewDice());
-  const { width, height } = useWindowSize();
-  const gameWon =
-    dice.every((die) => die.isHeld) &&
-    dice.every((die) => die.value === dice[0].value);
+  const [dice, setDice] = useState<DieType[]>(() => generateAllNewDice());
+
+  const { width, height }: { width: number; height: number } = useWindowSize();
+
+  const allHeld = dice.every((die) => die.isHeld);
+  const allSameValue = dice.every((die) => die.value === dice[0].value);
+  const gameWon = allHeld && allSameValue;
 
   return (
     <main>
@@ -65,9 +57,10 @@ export const App = () => {
         {dice.map((dieObj) => (
           <Die
             key={dieObj.id}
+            id={dieObj.id}
             value={dieObj.value}
             isHeld={dieObj.isHeld}
-            hold={() => hold(dieObj.id)}
+            hold={hold}
           />
         ))}
       </div>

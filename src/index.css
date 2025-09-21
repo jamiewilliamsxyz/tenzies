@@ -10,7 +10,7 @@ body {
   height: 100vh;
   font-family: "Inter", Arial, Verdana, sans-serif;
   font-weight: 500;
-  letter-spacing: 110%;
+
   background-color: var(--background);
   color: var(--text);
   display: flex;

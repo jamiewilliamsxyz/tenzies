@@ -1,14 +1,21 @@
-export const Die = (props) => {
+import { JSX } from "react";
+
+type DieProps = {
+  id: string;
+  hold: (id: string) => void;
+  isHeld: boolean;
+  value: number;
+};
+
+export const Die = ({ id, hold, isHeld, value }: DieProps): JSX.Element => {
   return (
     <button
-      onClick={props.hold}
-      className={`die ${props.isHeld && "die-held"}`}
-      aria-pressed={props.isHeld}
-      aria-label={`Die with value ${props.value}, ${
-        props.isHeld ? "Held" : "Not held"
-      }`}
+      onClick={() => hold(id)}
+      className={`die ${isHeld ? "die-held" : ""}`}
+      aria-pressed={isHeld}
+      aria-label={`Die with value ${value}, ${isHeld ? "Held" : "Not held"}`}
     >
-      {props.value}
+      {value}
     </button>
   );
 };
