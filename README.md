@@ -4,7 +4,7 @@ Tenzies is a fun web game based on the dice game Tenzi
 
 Roll a set of 10 dice until they all have the same number
 
-This project was created with React, JavaScript and CSS3
+This project was created with React, TypeScript and CSS3
 
 ### Features
 
